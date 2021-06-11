@@ -1,0 +1,2300 @@
+<html
+        xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+<title>Jira</title>
+<style type="text/css">
+table {
+    mso-displayed-decimal-separator:"\,";
+    mso-displayed-thousand-separator:" ";
+}
+body
+{
+    margin: 0px;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    color:black;
+}
+
+</style>
+<META HTTP-EQUIV="Content-Type" Content="application/vnd.ms-excel; charset=UTF-8">
+<!-- JRA-7598 - ensure fields (e.g. description) occupy only one cell - even fields containing newlines. -->
+<!--
+Vertical align all cells to the top, in order to align all issue rows of issuetable to the top,
+since Excel does not use or save the css files it is hardcoded here.
+-->
+<style>
+@page
+{
+mso-page-orientation:landscape;
+margin:.25in .25in .5in .25in;
+mso-header-margin:.5in;
+mso-footer-margin:.25in;
+mso-footer-data:"&R&P of &N";
+mso-horizontal-page-align:center;
+mso-vertical-page-align:center;
+}
+
+td.issuekey,
+td.issuetype,
+td.status {
+    mso-style-parent: "";
+    mso-number-format: \@;
+    text-align: left;
+}
+br
+{
+    mso-data-placement:same-cell;
+}
+
+td
+{
+    vertical-align: top;
+}
+</style>
+
+<!--[if gte mso 9]><xml>
+<x:ExcelWorkbook>
+<x:ExcelWorksheets>
+<x:ExcelWorksheet>
+<x:Name>general_report</x:Name>
+<x:WorksheetOptions>
+<x:Print>
+<x:ValidPrinterInfo/>
+</x:Print>
+</x:WorksheetOptions>
+</x:ExcelWorksheet>
+</x:ExcelWorksheets>
+</x:ExcelWorkbook>
+</xml><![endif]-->
+</head>
+<body>
+
+<table border="1">
+    <tr bgcolor="#205081" height="30">
+        <td colspan="71">
+            <img src="https://chipihintouragency.atlassian.net/images/icon-jira-family-logo.png" width="57" height="30" border="0" alt="Jira">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="71">
+            <a href="https://chipihintouragency.atlassian.net/issues/?jql=project+%3D+%22TAGENCY%22+ORDER+BY+issuekey+DESC">Jira</a>
+        </td>
+    </tr>
+    <tr>
+                <td colspan="71">
+            Отображение <strong>19</strong> задач в <strong>10/июн/21 10:13 PM</strong>.
+        </td>
+    </tr>
+</table>
+
+
+
+
+                                                    <table id="issuetable" class="aui " border="1" cellpadding="3" cellspacing="1" width="100%">
+                                <thead>
+        <tr class="rowHeader">
+            
+                                                            <th class="colHeaderLink headerrow-project" data-id="project">
+                            Проект
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuekey" data-id="issuekey">
+                            Ключ
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-summary" data-id="summary">
+                            Pезюме
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuetype" data-id="issuetype">
+                            Тип задачи
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-status" data-id="status">
+                            Статус
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-priority" data-id="priority">
+                            Приоритет
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolution" data-id="resolution">
+                            Решение
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-assignee" data-id="assignee">
+                            Исполнитель
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-reporter" data-id="reporter">
+                            Автор
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-creator" data-id="creator">
+                            Создатель
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-created" data-id="created">
+                            Создано
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-lastViewed" data-id="lastViewed">
+                            Последний просмотр
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-updated" data-id="updated">
+                            Обновлено
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-resolutiondate" data-id="resolutiondate">
+                            Решено
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-versions" data-id="versions">
+                            Версии Affects
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-fixVersions" data-id="fixVersions">
+                            Версии фикса
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-components" data-id="components">
+                            Компоненты
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-duedate" data-id="duedate">
+                            Срок исполнения
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-votes" data-id="votes">
+                            Голоса
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-watches" data-id="watches">
+                            Наблюдатели
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-thumbnail" data-id="thumbnail">
+                            Изображения
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeoriginalestimate" data-id="timeoriginalestimate">
+                            Исходная оценка
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timeestimate" data-id="timeestimate">
+                            Оценка остатка
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-timespent" data-id="timespent">
+                            Затраченное время
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-workratio" data-id="workratio">
+                            КПД (полезная работа/затраченная работа)
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-subtasks" data-id="subtasks">
+                            Подзадачи
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-issuelinks" data-id="issuelinks">
+                            Связанные задачи
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-environment" data-id="environment">
+                            Окружение
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-description" data-id="description">
+                            Описание
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-security" data-id="security">
+                            Уровень безопасности
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-progress" data-id="progress">
+                            Прогресс
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregateprogress" data-id="aggregateprogress">
+                            Суммарный прогресс
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimespent" data-id="aggregatetimespent">
+                            Суммарное затраченое время
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeestimate" data-id="aggregatetimeestimate">
+                            Суммарная оценка остатка
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-aggregatetimeoriginalestimate" data-id="aggregatetimeoriginalestimate">
+                            Суммарная первоначальная оценка
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-labels" data-id="labels">
+                            Метки
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-statuscategorychangedate" data-id="statuscategorychangedate">
+                            Дата изменения категории статуса
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-statusCategory" data-id="statusCategory">
+                            Категория статуса
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-parent" data-id="parent">
+                            Родитель
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10033" data-id="customfield_10033">
+                            Affected services
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10003" data-id="customfield_10003">
+                            Approvers
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10009" data-id="customfield_10009">
+                            Change completion date
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10007" data-id="customfield_10007">
+                            Change reason
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10006" data-id="customfield_10006">
+                            Change risk
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10008" data-id="customfield_10008">
+                            Change start date
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10005" data-id="customfield_10005">
+                            Change type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10013" data-id="customfield_10013">
+                            Epic Color
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10014" data-id="customfield_10014">
+                            Epic Link
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10011" data-id="customfield_10011">
+                            Epic Name
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10012" data-id="customfield_10012">
+                            Epic Status
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10021" data-id="customfield_10021">
+                            Flagged
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10004" data-id="customfield_10004">
+                            Impact
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10017" data-id="customfield_10017">
+                            Issue color
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10002" data-id="customfield_10002">
+                            Organizations
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10018" data-id="customfield_10018">
+                            Parent Link
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10019" data-id="customfield_10019">
+                            Rank
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10010" data-id="customfield_10010">
+                            Request Type
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10036" data-id="customfield_10036">
+                            Request language
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10026" data-id="customfield_10026">
+                            Request participants
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10027" data-id="customfield_10027">
+                            Satisfaction
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10020" data-id="customfield_10020">
+                            Sprint
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10015" data-id="customfield_10015">
+                            Start date
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10030" data-id="customfield_10030">
+                            Story Points
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10016" data-id="customfield_10016">
+                            Story point estimate
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10023" data-id="customfield_10023">
+                            Target end
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10022" data-id="customfield_10022">
+                            Target start
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10001" data-id="customfield_10001">
+                            Team
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10035" data-id="customfield_10035">
+                            Time to first response
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10034" data-id="customfield_10034">
+                            Time to resolution
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10024" data-id="customfield_10024">
+                            [CHART] Date of First Response
+                                                    </th>
+                                                
+                                                            <th class="colHeaderLink headerrow-customfield_10000" data-id="customfield_10000">
+                            development
+                                                    </th>
+                                                                    </tr>
+    </thead>
+    <tbody>
+                    
+
+                <tr id="issuerow10026" rel="10026" data-issuekey="TAGENCY-19" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-19" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-19">TAGENCY-19</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">TAGENCY-2</span>
+                Замовити екскурсовода
+    </p>
+</td>
+                                            <td class="issuetype">    Подзадача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;В работе&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;В данный момент по этой задаче ведется активная работа назначенным лицом.&lt;/span&gt;">В работе</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">    <em>Не назначено</em>
+</td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 10/июн/21 11:28 AM </td>
+                                            <td class="lastViewed"> 10/июн/21 10:12 PM </td>
+                                            <td class="updated"> 10/июн/21 8:10 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 10/июн/21 8:10 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-yellow
+            jira-issue-status-lozenge-max-width-medium">В работе</span>
+</td>
+                                            <td class="parent">            Замовити тури
+    </td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0005r:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020">Доска Спринт 1, Доска Спринт 2</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10025" rel="10025" data-issuekey="TAGENCY-18" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-18" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-18">TAGENCY-18</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">TAGENCY-2</span>
+                Забронювати готель
+    </p>
+</td>
+                                            <td class="issuetype">    Подзадача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;В работе&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;В данный момент по этой задаче ведется активная работа назначенным лицом.&lt;/span&gt;">В работе</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">    <em>Не назначено</em>
+</td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 10/июн/21 11:28 AM </td>
+                                            <td class="lastViewed"> 10/июн/21 11:28 AM </td>
+                                            <td class="updated"> 10/июн/21 8:10 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 10/июн/21 8:10 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-yellow
+            jira-issue-status-lozenge-max-width-medium">В работе</span>
+</td>
+                                            <td class="parent">            Замовити тури
+    </td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0005j:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020">Доска Спринт 1, Доска Спринт 2</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10024" rel="10024" data-issuekey="TAGENCY-17" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-17" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-17">TAGENCY-17</a>
+</td>
+                                            <td class="summary"><p>
+            <span class="parentIssue">TAGENCY-2</span>
+                Замовити авіаквиток
+    </p>
+</td>
+                                            <td class="issuetype">    Подзадача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;В работе&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;В данный момент по этой задаче ведется активная работа назначенным лицом.&lt;/span&gt;">В работе</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">    <em>Не назначено</em>
+</td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 10/июн/21 11:27 AM </td>
+                                            <td class="lastViewed"> 10/июн/21 11:27 AM </td>
+                                            <td class="updated"> 10/июн/21 8:10 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description"></td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 10/июн/21 8:10 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-yellow
+            jira-issue-status-lozenge-max-width-medium">В работе</span>
+</td>
+                                            <td class="parent">            Замовити тури
+    </td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0005b:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020">Доска Спринт 1, Доска Спринт 2</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10023" rel="10023" data-issuekey="TAGENCY-16" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-16" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-16">TAGENCY-16</a>
+</td>
+                                            <td class="summary"><p>
+                Створити резервну копію БД 
+    </p>
+</td>
+                                            <td class="issuetype">    Задача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Michel Gerard
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 8:35 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 11:47 AM </td>
+                                            <td class="updated"> 10/июн/21 11:47 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Створити резервну копію БД.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 09/июн/21 8:35 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i00053:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10022" rel="10022" data-issuekey="TAGENCY-15" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-15" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-15">TAGENCY-15</a>
+</td>
+                                            <td class="summary"><p>
+                Додати нові поля до БД 
+    </p>
+</td>
+                                            <td class="issuetype">    Задача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            mihail124872
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 8:34 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 11:42 AM </td>
+                                            <td class="updated"> 10/июн/21 11:42 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Додати поле “ наявності мобільного додатку” до БД.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 09/июн/21 8:34 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0004v:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10021" rel="10021" data-issuekey="TAGENCY-14" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-14" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-14">TAGENCY-14</a>
+</td>
+                                            <td class="summary"><p>
+                Додати посилання на мобільний додаток 
+    </p>
+</td>
+                                            <td class="issuetype">    Задача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Mihail Chipihin
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 8:34 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 11:47 AM </td>
+                                            <td class="updated"> 10/июн/21 11:47 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Додати посилання на сайт в нижньому лівому куті.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 09/июн/21 8:34 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0004n:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10020" rel="10020" data-issuekey="TAGENCY-13" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-13" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-13">TAGENCY-13</a>
+</td>
+                                            <td class="summary"><p>
+                Переробити дизайн веб сайту 
+    </p>
+</td>
+                                            <td class="issuetype">    Задача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            mihail124872
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 8:33 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 11:42 AM </td>
+                                            <td class="updated"> 10/июн/21 11:42 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Змінити дизайн головної сторінки сайту.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 09/июн/21 8:33 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0004f:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10019" rel="10019" data-issuekey="TAGENCY-12" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-12" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-12">TAGENCY-12</a>
+</td>
+                                            <td class="summary"><p>
+                Під&#39;єдання мобільного додатку до БД 
+    </p>
+</td>
+                                            <td class="issuetype">    Задача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="assignee">            Mykhailo Chipihin
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 8:31 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 8:21 PM </td>
+                                            <td class="updated"> 10/июн/21 8:11 PM </td>
+                                            <td class="resolutiondate"> 10/июн/21 7:35 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">7200</td>
+                                            <td class="timeestimate">1200</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Додати можливість доступу до бази даних.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">1200</td>
+                                            <td class="aggregatetimeoriginalestimate">7200</td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 10/июн/21 7:35 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Готово</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i00067:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020">Доска Спринт 1, Доска Спринт 2</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10018" rel="10018" data-issuekey="TAGENCY-11" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-11" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-11">TAGENCY-11</a>
+</td>
+                                            <td class="summary"><p>
+                Створення мобільного додатку 
+    </p>
+</td>
+                                            <td class="issuetype">    История
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-green jira-issue-status-lozenge-done aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;Готово&lt;/span&gt;">Готово</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    Готово
+</td>
+                                            <td class="assignee">            Mykhailo Chipihin
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 8:29 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 8:11 PM </td>
+                                            <td class="updated"> 10/июн/21 8:11 PM </td>
+                                            <td class="resolutiondate"> 10/июн/21 7:35 PM </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">74400</td>
+                                            <td class="timeestimate">6000</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Повна розробка мобільного додатку відповідно до дизайну.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">6000</td>
+                                            <td class="aggregatetimeoriginalestimate">74400</td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 10/июн/21 7:35 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-green
+            jira-issue-status-lozenge-max-width-medium">Готово</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i00063:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020">Доска Спринт 1, Доска Спринт 2</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030">    20
+</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10017" rel="10017" data-issuekey="TAGENCY-10" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-10" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-10">TAGENCY-10</a>
+</td>
+                                            <td class="summary"><p>
+                Створення макету для мобільного додатку 
+    </p>
+</td>
+                                            <td class="issuetype">    История
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Mykhailo Chipihin
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 8:28 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 7:54 PM </td>
+                                            <td class="updated"> 10/июн/21 11:46 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Розробити дизайн всіх сторінок мобільного додатку.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 09/июн/21 8:28 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0003r:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030">    10
+</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10016" rel="10016" data-issuekey="TAGENCY-9" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-9" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-9">TAGENCY-9</a>
+</td>
+                                            <td class="summary"><p>
+                Додати нових клієнтів до бази даних 
+    </p>
+</td>
+                                            <td class="issuetype">    Задача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Mihail Chipihin
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 8:27 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 11:47 AM </td>
+                                            <td class="updated"> 10/июн/21 11:47 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Записати всіх нових клієнтів, які приходили до турагенства в останній місяць.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 09/июн/21 8:27 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0003j:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10015" rel="10015" data-issuekey="TAGENCY-8" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-8" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-8">TAGENCY-8</a>
+</td>
+                                            <td class="summary"><p>
+                Вести звітність про число клієнтів за місяць 
+    </p>
+</td>
+                                            <td class="issuetype">    Задача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            mihail124872
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 8:22 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 11:41 AM </td>
+                                            <td class="updated"> 10/июн/21 11:41 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Написати звіт про кількість клієнтів, резьтатами місячної роботи.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 09/июн/21 8:22 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0003b:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030"></td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10014" rel="10014" data-issuekey="TAGENCY-7" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-7" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-7">TAGENCY-7</a>
+</td>
+                                            <td class="summary"><p>
+                Сповістити клієнта про час та місце початку туру 
+    </p>
+</td>
+                                            <td class="issuetype">    Задача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Mihail Chipihin
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 8:07 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 11:46 AM </td>
+                                            <td class="updated"> 10/июн/21 11:46 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Cповістити клієнта про час та місце туру, записати до БД результат. 
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 09/июн/21 8:07 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i00033:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030">    4
+</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10013" rel="10013" data-issuekey="TAGENCY-6" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-6" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-6">TAGENCY-6</a>
+</td>
+                                            <td class="summary"><p>
+                Замовити рекламу 
+    </p>
+</td>
+                                            <td class="issuetype">    История
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Low
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Michel Gerard
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 7:56 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 11:46 AM </td>
+                                            <td class="updated"> 10/июн/21 11:46 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Замовити біг-борд в центрі міста.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 09/июн/21 7:56 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0002v:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030">    4
+</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10012" rel="10012" data-issuekey="TAGENCY-5" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-5" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-5">TAGENCY-5</a>
+</td>
+                                            <td class="summary"><p>
+                Внести замовлення до БД 
+    </p>
+</td>
+                                            <td class="issuetype">    Задача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            mihail124872
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 7:55 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 8:05 PM </td>
+                                            <td class="updated"> 10/июн/21 11:41 AM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate"></td>
+                                            <td class="timeestimate"></td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">&nbsp;
+</td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Внести всі нові замовлення до бази даних.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress"></td>
+                                            <td class="aggregateprogress"></td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate"></td>
+                                            <td class="aggregatetimeoriginalestimate"></td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 09/июн/21 7:55 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0002n:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020"></td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030">    2
+</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10011" rel="10011" data-issuekey="TAGENCY-4" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-4" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-4">TAGENCY-4</a>
+</td>
+                                            <td class="summary"><p>
+                Розсилка нових турів  
+    </p>
+</td>
+                                            <td class="issuetype">    Задача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;В работе&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;В данный момент по этой задаче ведется активная работа назначенным лицом.&lt;/span&gt;">В работе</span>    </td>
+                                            <td class="priority">           Low
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Michel Gerard
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 7:54 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 8:11 PM </td>
+                                            <td class="updated"> 10/июн/21 8:11 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">1800</td>
+                                            <td class="timeestimate">1800</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Розіслати нові тури клієнтам які знаходяться  в БД турагенства.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">1800</td>
+                                            <td class="aggregatetimeoriginalestimate">1800</td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 10/июн/21 11:56 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-yellow
+            jira-issue-status-lozenge-max-width-medium">В работе</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0002f:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020">Доска Спринт 1, Доска Спринт 2</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030">    2
+</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10010" rel="10010" data-issuekey="TAGENCY-3" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-3" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-3">TAGENCY-3</a>
+</td>
+                                            <td class="summary"><p>
+                Надрукувати брошюри
+    </p>
+</td>
+                                            <td class="issuetype">    Задача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;В работе&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;В данный момент по этой задаче ведется активная работа назначенным лицом.&lt;/span&gt;">В работе</span>    </td>
+                                            <td class="priority">           Medium
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Mihail Chipihin
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 7:53 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 7:54 PM </td>
+                                            <td class="updated"> 10/июн/21 7:49 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">1800</td>
+                                            <td class="timeestimate">1800</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Необхідно надрукувати 100 нових брошюр, та залишити на рецепшені.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">1800</td>
+                                            <td class="aggregatetimeoriginalestimate">1800</td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 10/июн/21 11:56 AM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-yellow
+            jira-issue-status-lozenge-max-width-medium">В работе</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i00027:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020">Доска Спринт 1, Доска Спринт 2</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030">    1
+</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10009" rel="10009" data-issuekey="TAGENCY-2" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-2" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-2">TAGENCY-2</a>
+</td>
+                                            <td class="summary"><p>
+                Замовити тури
+    </p>
+</td>
+                                            <td class="issuetype">    История
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-yellow jira-issue-status-lozenge-indeterminate aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;В работе&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;jira-issue-status-tooltip-desc&quot;&gt;В данный момент по этой задаче ведется активная работа назначенным лицом.&lt;/span&gt;">В работе</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Mykhailo Chipihin
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 7:51 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 8:21 PM </td>
+                                            <td class="updated"> 10/июн/21 8:12 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">288000</td>
+                                            <td class="timeestimate">288000</td>
+                                            <td class="timespent"></td>
+                                            <td class="workratio">            0%
+    </td>
+                                            <td class="subtasks">                                        TAGENCY-17,                                                TAGENCY-18,                                                TAGENCY-19                        </td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Необхідно забронювати готель, замовити авіаквитки, та екскурсовода, та написати звіт прорезультат.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     0%
+</td>
+                                            <td class="aggregateprogress">     0%
+</td>
+                                            <td class="aggregatetimespent"></td>
+                                            <td class="aggregatetimeestimate">288000</td>
+                                            <td class="aggregatetimeoriginalestimate">288000</td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 10/июн/21 8:10 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-yellow
+            jira-issue-status-lozenge-max-width-medium">В работе</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0001z:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020">Доска Спринт 1, Доска Спринт 2</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030">    8
+</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+
+
+                <tr id="issuerow10008" rel="10008" data-issuekey="TAGENCY-1" class="issuerow">
+                                            <td class="project">    Турагенство
+</td>
+                                            <td class="issuekey">
+
+    <a class="issue-link" data-issue-key="TAGENCY-1" href="https://chipihintouragency.atlassian.net/browse/TAGENCY-1">TAGENCY-1</a>
+</td>
+                                            <td class="summary"><p>
+                Перевірка оплати
+    </p>
+</td>
+                                            <td class="issuetype">    Задача
+</td>
+                                            <td class="status">
+                <span class=" jira-issue-status-lozenge aui-lozenge jira-issue-status-lozenge-blue-gray jira-issue-status-lozenge-new aui-lozenge-subtle jira-issue-status-lozenge-max-width-medium" data-tooltip="&lt;span class=&quot;jira-issue-status-tooltip-title&quot;&gt;К выполнению&lt;/span&gt;">К выполнению</span>    </td>
+                                            <td class="priority">           High
+    </td>
+                                            <td class="resolution">    <em>Нет решения</em>
+</td>
+                                            <td class="assignee">            Mykhailo Chipihin
+    </td>
+                                            <td class="reporter">            Mykhailo Chipihin
+    </td>
+                                            <td class="creator">            Mykhailo Chipihin
+    </td>
+                                            <td class="created"> 09/июн/21 7:44 PM </td>
+                                            <td class="lastViewed"> 10/июн/21 10:05 PM </td>
+                                            <td class="updated"> 10/июн/21 7:53 PM </td>
+                                            <td class="resolutiondate"> &nbsp; </td>
+                                            <td class="versions">    &nbsp;
+</td>
+                                            <td class="fixVersions">    &nbsp;
+</td>
+                                            <td class="components">    &nbsp;
+</td>
+                                            <td class="duedate">    &nbsp;
+</td>
+                                            <td class="votes">0</td>
+                                            <td class="watches">1</td>
+                                            <td class="thumbnail"></td>
+                                            <td class="timeoriginalestimate">60000</td>
+                                            <td class="timeestimate">197100</td>
+                                            <td class="timespent">53100</td>
+                                            <td class="workratio">            88%
+    </td>
+                                            <td class="subtasks"></td>
+                                            <td class="issuelinks"></td>
+                                            <td class="environment"></td>
+                                            <td class="description">      Звіритись з квитанцією, занести відповідні дані до БД.
+  </td>
+                                            <td class="security"></td>
+                                            <td class="progress">     21%
+</td>
+                                            <td class="aggregateprogress">     21%
+</td>
+                                            <td class="aggregatetimespent">53100</td>
+                                            <td class="aggregatetimeestimate">197100</td>
+                                            <td class="aggregatetimeoriginalestimate">60000</td>
+                                            <td class="labels"></td>
+                                            <td class="statuscategorychangedate"> 09/июн/21 7:44 PM </td>
+                                            <td class="statusCategory">
+    <span class="aui-lozenge aui-lozenge-subtle jira-issue-status-lozenge jira-issue-status-lozenge-blue-gray
+            jira-issue-status-lozenge-max-width-medium">К выполнению</span>
+</td>
+                                            <td class="parent"></td>
+                                            <td class="customfield_10033"></td>
+                                            <td class="customfield_10003"></td>
+                                            <td class="customfield_10009"></td>
+                                            <td class="customfield_10007"></td>
+                                            <td class="customfield_10006"></td>
+                                            <td class="customfield_10008"></td>
+                                            <td class="customfield_10005"></td>
+                                            <td class="customfield_10013"></td>
+                                            <td class="customfield_10014"></td>
+                                            <td class="customfield_10011"></td>
+                                            <td class="customfield_10012"></td>
+                                            <td class="customfield_10021"></td>
+                                            <td class="customfield_10004"></td>
+                                            <td class="customfield_10017"></td>
+                                            <td class="customfield_10002"></td>
+                                            <td class="customfield_10018"></td>
+                                            <td class="customfield_10019">      0|i0001r:
+  </td>
+                                            <td class="customfield_10010"></td>
+                                            <td class="customfield_10036"></td>
+                                            <td class="customfield_10026"></td>
+                                            <td class="customfield_10027"><div class="sd-feedback-rating-column"></div></td>
+                                            <td class="customfield_10020">Доска Спринт 1, Доска Спринт 2</td>
+                                            <td class="customfield_10015"></td>
+                                            <td class="customfield_10030">    2
+</td>
+                                            <td class="customfield_10016"></td>
+                                            <td class="customfield_10023"></td>
+                                            <td class="customfield_10022"></td>
+                                            <td class="customfield_10001"></td>
+                                            <td class="customfield_10035"></td>
+                                            <td class="customfield_10034"></td>
+                                            <td class="customfield_10024"></td>
+                                            <td class="customfield_10000"></td>
+                    </tr>
+                </tbody>
+    </table>
+    <div class="end-of-stable-message"></div>
+            <table border="1" >
+<tr>
+    <td bgcolor="#dddddd" colspan="71"><font size="1">
+        Полученный Thu Jun 10 19:13:40 UTC 2021 Mykhailo Chipihin используя JIRA 1001.0.0-SNAPSHOT#100166-sha1:2d22d436598c0cf77f0c427f3b5c2fd3091b95df.
+    </font></td>
+</tr>
+</table>
+
+</body>
+</html>
